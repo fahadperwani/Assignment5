@@ -1,11 +1,22 @@
 package interpreter.bytecode;
 
+import java.util.List;
+
 import interpreter.VirtualMachine;
 
 public class LoadCode extends ByteCode {
     private int offset; // Offset of the value in the runtime stack
     private int value;
     private String variable;
+
+    public LoadCode() {
+    }
+
+    public LoadCode(List<String> args) {
+        if (args.size() > 0) {
+            this.value = Integer.parseInt(args.get(0));
+        }
+    }
 
     @Override
     public void init(String[] arguments) {

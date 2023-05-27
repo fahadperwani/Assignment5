@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
-public class RuntimeStack {
+public class RunTimeStack {
     private Vector<Integer> runStack;
     private Stack<Integer> framePointers;
 
-    public RuntimeStack() {
+    public RunTimeStack() {
         runStack = new Vector<>();
         framePointers = new Stack<>();
         framePointers.push(0); // Initial frame pointer at position 0
@@ -85,12 +85,35 @@ public class RuntimeStack {
         System.out.println();
     }
 
+    @Override
+    public String toString() {
+        int frameCount = framePointers.size();
+        StringBuffer buff = new StringBuffer("");
+
+        for (int i = frameCount - 1; i > 0; i--) {
+            int frameStart = framePointers.get(i - 1);
+            int frameEnd = framePointers.get(i);
+            List<Integer> frame = runStack.subList(frameStart, frameEnd);
+            buff.append(frame.toString() + " ");
+        }
+
+        List<Integer> lastFrame = runStack.subList(framePointers.peek(), runStack.size());
+        buff.append(lastFrame);
+        return buff + "";
+    }
+
     public int load(int offset) {
         return runStack.get(framePointers.peek() + offset);
     }
 
     public int getFrameNumbers() {
         return framePointers.size();
+    }
+
+    public void store(int offset) {
+        int value = pop();
+        int address = framePointers.peek() + offset;
+        runStack.set(address, value);
     }
 
 }

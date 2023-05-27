@@ -1,5 +1,7 @@
 package interpreter.bytecode;
 
+import java.util.List;
+
 import interpreter.VirtualMachine;
 
 public class BopCode extends ByteCode {
@@ -7,6 +9,16 @@ public class BopCode extends ByteCode {
 
     public void init(String[] tokens) {
         this.operator = tokens[1];
+    }
+
+    public BopCode() {
+
+    }
+
+    public BopCode(List<String> args) {
+        if (args.size() > 0) {
+            this.operator = args.get(0);
+        }
     }
 
     public void execute(VirtualMachine vm) {
