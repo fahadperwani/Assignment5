@@ -10,4 +10,10 @@ public class ReadCode extends ByteCode {
     public void execute(VirtualMachine vm) {
         // Perform the necessary operations to read input from the user
     }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "READ";
+    }
 }

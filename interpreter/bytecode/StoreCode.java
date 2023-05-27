@@ -1,11 +1,22 @@
 package interpreter.bytecode;
 
+import java.util.List;
+
 import interpreter.VirtualMachine;
 
 public class StoreCode extends ByteCode {
     private int offset; // Offset for the variable
     private String variable; // Name of the variable
     private int value;
+
+    public StoreCode() {
+    }
+
+    public StoreCode(List<String> args) {
+        if (args.size() > 0) {
+            this.variable = args.get(0);
+        }
+    }
 
     // @Override
     public void init(String[] arguments) {

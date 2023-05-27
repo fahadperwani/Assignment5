@@ -11,4 +11,10 @@ public class HaltCode extends ByteCode {
     public void execute(VirtualMachine vm) {
         vm.setRunning(false);
     }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "HALT";
+    }
 }

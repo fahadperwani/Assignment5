@@ -5,7 +5,7 @@ import java.util.Stack;
 import interpreter.bytecode.*;;
 
 public class VirtualMachine {
-    private RuntimeStack runtimeStack;
+    private RunTimeStack runtimeStack;
     private Program program;
     private int programCounter;
     private boolean isRunning;
@@ -13,7 +13,7 @@ public class VirtualMachine {
     private boolean onFlag;
 
     public VirtualMachine() {
-        runtimeStack = new RuntimeStack();
+        runtimeStack = new RunTimeStack();
         returnAddresses = new Stack<>();
         program = null;
         programCounter = 0;
@@ -49,7 +49,7 @@ public class VirtualMachine {
 
     // Other methods for accessing/manipulating the runtime stack
 
-    public RuntimeStack getRuntimeStack() {
+    public RunTimeStack getRuntimeStack() {
         return runtimeStack;
     }
 

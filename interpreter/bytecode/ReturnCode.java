@@ -1,10 +1,18 @@
 package interpreter.bytecode;
 
+import java.util.List;
+
 import interpreter.VirtualMachine;
 
 public class ReturnCode extends ByteCode {
     private int toReturn;
     private String variable;
+
+    public ReturnCode(List<String> args) {
+        if (args.size() > 0) {
+            this.variable = args.get(0);
+        }
+    }
 
     @Override
     public void init(String[] arguments) {

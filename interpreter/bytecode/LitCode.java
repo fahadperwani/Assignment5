@@ -1,10 +1,21 @@
 package interpreter.bytecode;
 
+import java.util.List;
+
 import interpreter.VirtualMachine;
 
 public class LitCode extends ByteCode {
     private int value; // Value associated with the LIT bytecode instruction
     private String variable;
+
+    public LitCode() {
+    }
+
+    public LitCode(List<String> args) {
+        if (args.size() > 0) {
+            this.value = Integer.parseInt(args.get(0));
+        }
+    }
 
     @Override
     public void init(String[] arguments) {

@@ -1,11 +1,22 @@
 package interpreter.bytecode;
 
+import java.util.List;
+
 import interpreter.VirtualMachine;
 
 public class CallCode extends ByteCode {
     private String functionName; // Name of the function to call
     private int targetAddress; // Target address to jump to
     private String args;
+
+    public CallCode() {
+    }
+
+    public CallCode(List<String> args) {
+        if (args.size() > 0) {
+            this.targetAddress = Integer.parseInt(args.get(0));
+        }
+    }
 
     @Override
     public void init(String[] arguments) {
@@ -31,7 +42,11 @@ public class CallCode extends ByteCode {
     public String toString() {
         String actual = functionName.replaceAll("<<.*?>>", "");
         StringBuffer buff = new StringBuffer(String.format("%-25s", "CALL " + functionName))
-                .append("end " + actual);
+                .append("end: " + actual);
         return buff + args;
+    }
+
+    public int getBranchTarget() {
+        return Integer.parseInt(functionName);
     }
 }
